@@ -1,18 +1,20 @@
 #!/usr/bin/python3
 """determines if all the boxes can be opened"""
 
+
 def canUnlockAll(boxes):
     """determines if all the boxes can be opened"""
     n = len(boxes)
-    unlocked = [False] * n
-    unlocked[0] = True
+    locked = [True] * n
+    locked[0] = False
     queue = [0]
+    count = 1
 
-    while queue and (n != 1):
+    while queue and (count != n):
         current_box = queue.pop(0)
         for key in boxes[current_box]:
-            if not unlocked[key]:
-                unlocked[key] = True
+            if key < n and locked[key]:
+                locked[key] = False
                 queue.append(key)
-                n -= 1
-    return (n == 1)
+                count += 1
+    return (n == count)
