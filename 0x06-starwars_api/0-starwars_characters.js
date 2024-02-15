@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-const request = require("request");
+const request = require('request');
 
 const API = `https://swapi-api.alx-tools.com/api/films/${process.argv[2]}`;
 
@@ -11,7 +11,7 @@ request(API, (err, response, body) => {
   }
 });
 
-function print(charAPI, i) {
+function print (charAPI, i) {
   request(charAPI[i], (err, response, body) => {
     if (!err) {
       const char = JSON.parse(body);
