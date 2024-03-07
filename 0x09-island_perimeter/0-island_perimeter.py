@@ -9,5 +9,9 @@ def island_perimeter(grid):
     for i in range(rows):
         for j in range(cols):
             if grid[i][j] == 1:
-                perimeter += 4 - 2 * (grid[i - 1][j] + grid[i][j - 1])
+                perimeter += 4
+                if i > 0:
+                    perimeter -= 2 * grid[i - 1][j]
+                if j > 0:
+                    perimeter -= 2 * grid[i][j - 1]
     return perimeter
